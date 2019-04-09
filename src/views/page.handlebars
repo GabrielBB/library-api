@@ -1,7 +1,54 @@
 <html>
 
+<head>
+  <style>
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box div {
+      width: 850px;
+      min-height: 1100px;
+      position: relative;
+      border-style: solid;
+      border-width: 3px;
+      border-color: #353535;
+      padding: 40px;
+      background-color: white;
+    }
+
+    .box div .footer {
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      font-weight: bold;
+    }
+
+    pre {
+      white-space: pre-wrap;
+    }
+
+    body {
+      background-color: #777777;
+    }
+
+    .title {
+      color: darkgrey;
+    }
+  </style>
+</head>
+
 <body>
-    <h3>{{{content}}}</h3>
+  <div class="box center">
+    <div>
+      <p class="title center">{{{bookTitle}}}</p>
+      <pre>{{{pageContent}}}</pre>
+      <p class="footer">{{{pageNumber}}}</p>
+    </div>
+
+  </div>
 </body>
 
 </html>

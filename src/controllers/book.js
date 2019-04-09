@@ -54,7 +54,11 @@ module.exports = (db) => {
     router.get(['/:id/page/:pageNum/html'], async (req, res) => {
         try {
             const page = await findPageByBookIdAndNumber(req);
-            res.render('page', { content: page.Content });
+
+            const bookId = req.params.id;
+            const book = await bookModel.findById(bookId);
+
+            res.render('page', { pageContent: page.Content, pageNumber: page.PageNumber, bookTitle: book.Title });
         } catch (e) {
             console.error(e);
             res.send(e);
