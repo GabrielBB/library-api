@@ -47,5 +47,16 @@ module.exports = (db) => {
         }
     });
 
+    // Get Page Content in HTML format
+    router.get(['/:id/page/:pageNum/html'], async (req, res) => {
+        try {
+            const page = await getPageByNumber(req);
+            res.sendFile('page.html', { root: './src/views' });
+        } catch (e) {
+            console.error(e);
+            res.send(e);
+        }
+    });
+
     return router;
 };
