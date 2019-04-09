@@ -5,7 +5,7 @@ async function initDb() {
     try {
         const db = await Database.open(':memory:');
 
-        const sql = fs.readFileSync('./src/utils/squema.sql', 'utf8');
+        const sql = fs.readFileSync('./src/helpers/squema.sql', 'utf8');
         await db.exec(sql);
 
         console.log('Sucessfully connected to In-Memory Database')

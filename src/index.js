@@ -1,8 +1,8 @@
 const port = process.env.PORT || 3000;
 
 const express = require("express");
-const bookController = require('./controllers/book.controller');
-const initDb = require('./utils/database');
+const bookController = require('./controllers/book');
+const initDb = require('./helpers/database');
 
 (async () => {
     const db = await initDb();
