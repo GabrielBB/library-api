@@ -1,11 +1,18 @@
-async function getBooks(db) {
-    const sql = 'SELECT * FROM Book';
-    return await db.all(sql);
+class Book {
+
+    constructor(db) {
+        this.db = db;
+    }
+
+    async findAll() {
+        const sql = 'SELECT * FROM Book';
+        return await this.db.all(sql);
+    }
+
+    async findById(id) {
+        const sql = 'SELECT * FROM Book WHERE ID = ?';
+        return await this.db.get(sql, [id]);
+    }
 }
 
-async function getBookById(id, db) {
-    const sql = 'SELECT * FROM Book WHERE ID = ?';
-    return await db.get(sql, [id]);
-}
-
-module.exports = { getBooks, getBookById }
+module.exports = Book;

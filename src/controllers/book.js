@@ -1,13 +1,16 @@
 const router = require('express').Router();
-const bookService = require('../models/book');
-const pageService = require('../models/page');
+const Book = require('../models/book');
+const Page = require('../models/page');
 
 module.exports = (db) => {
+
+    const bookModel = new Book(db);
+    const pageModel = new Page(db);
 
     // Get All Books
     router.get('/', async (req, res) => {
         try {
-            res.json(await bookService.getBooks(db));
+            res.json(await bookModel.findAll());
         } catch (e) {
             console.error(e)
             res.send(e);
@@ -18,9 +21,9 @@ module.exports = (db) => {
     router.get('/:id', async (req, res) => {
         try {
             const bookId = req.params.id;
-            const book = await bookService.getBookById(bookId, db);
+            const book = await bookModel.findById(bookId);
 
-            const pages = await pageService.getPagesByBook(bookId, db);
+            const pages = await pageModel.findByBookId(bookId);
             book.pages = pages;
 
             res.json(book);
@@ -30,16 +33,16 @@ module.exports = (db) => {
         }
     });
 
-    async function getPageByNumber(req) {
+    async function findPageByBookIdAndNumber(req) {
         const bookId = req.params.id;
         const pageNum = req.params.pageNum;
-        return await pageService.getPageByNumber(bookId, pageNum, db);
+        return await pageModel.findByBookIdAndNumber(bookId, pageNum);
     }
 
     // Get Page Content by Page Number
     router.get(['/:id/page/:pageNum'], async (req, res) => {
         try {
-            const page = await getPageByNumber(req);
+            const page = await findPageByBookIdAndNumber(req);
             res.send(page.Content);
         } catch (e) {
             console.error(e);
@@ -50,8 +53,8 @@ module.exports = (db) => {
     // Get Page Content in HTML format
     router.get(['/:id/page/:pageNum/html'], async (req, res) => {
         try {
-            const page = await getPageByNumber(req);
-            res.sendFile('page.html', { root: './src/views' });
+            const page = await findPageByBookIdAndNumber(req);
+            res.render('page', { content: page.Content });
         } catch (e) {
             console.error(e);
             res.send(e);
