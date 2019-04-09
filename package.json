@@ -1,12 +1,21 @@
 {
   "name": "library-api",
+  "displayName": "Library API",
   "version": "1.0.0",
   "description": "Library API for Soluciones GBH",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Gabriel Basilio Brito",
+  "author": {
+    "name": "Gabriel Basilio Brito",
+    "email": "gabrielbb0306@gmail.com",
+    "url": "https://github.com/GabrielBB"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GabrielBB/library-api.git"
+  },
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
