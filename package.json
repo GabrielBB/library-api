@@ -5,7 +5,8 @@
   "description": "Library API for Soluciones GBH",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "start": "node ."
   },
   "author": {
     "name": "Gabriel Basilio Brito",
