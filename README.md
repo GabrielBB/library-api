@@ -33,6 +33,12 @@ npm start
 Example endpoints:
 
 http://localhost:3000/book/
+
+
 http://localhost:3000/book/1/
+
+
 http://localhost:3000/book/1/page/1
+
+
 http://localhost:3000/book/1/page/3/html
