@@ -1,6 +1,6 @@
-Library API
+# Library API
 
-This is a simple REST API made with Node JS and an In-Memory SQLITE database. 
+### This is a simple Library REST API made with Node JS and an In-Memory SQLITE database. 
 
 To make the database migration pretty simple there is a seed.sql file under /src/helpers/. The application looks for this file and makes an execution to the database everytime it starts. This will make it simple to get you up and running without any configuration.
 
