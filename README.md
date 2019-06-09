@@ -1,4 +1,4 @@
-Library API for Soluciones GBH
+Library API
 
 This is a simple REST API made with Node JS and an In-Memory SQLITE database. 
 
